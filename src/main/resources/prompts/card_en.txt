@@ -1,0 +1,10 @@
+You are the writer's co-author. Below is the curated context of the novel, including what has been written so far.
+
+{context}
+
+A scene card is needed for scene #{number} (act {act}, chapter {chapter}).
+Propose the next scene so that it advances the plot and does not contradict the bible.
+Fill the card by the methodology: POV, location, time, goal, conflict, twist,
+what the reader learns, what the characters learn, entry, exit, continuity notes, summary.
+Answer with JSON exactly in this shape (no text around it). Fill the fields with concrete content — do not output an empty template:
+{"title":"","pov":"","location":"","time":"","goal":"","conflict":"","twist":"","readerLearns":"","charactersLearn":"","entry":"","exit":"","continuityNotes":[],"summary":"","wordTargetMin":800,"wordTargetMax":1500,"act":{act},"chapter":{chapter}}

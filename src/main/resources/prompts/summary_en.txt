@@ -1,0 +1,3 @@
+Summarize the scene in 2–5 sentences. Return only the summary, without explanations or headings.
+Context:
+{context}

@@ -12,6 +12,8 @@
     <properties>
         <!-- Latest stable Kotlin release (queried from Maven Central). -->
         <kotlin.version>2.4.20</kotlin.version>
+        <!-- Latest stable JUnit 5 (queried from Maven Central). -->
+        <junit.version>5.14.4</junit.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- Java SE 25 is the current LTS release. -->
         <jvm.target>25</jvm.target>
@@ -23,10 +25,23 @@
             <artifactId>kotlin-stdlib</artifactId>
             <version>${kotlin.version}</version>
         </dependency>
+        <!-- The only third-party runtime library besides kotlin-stdlib (АРХ-02). -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20260814</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
         <sourceDirectory>src/main/kotlin</sourceDirectory>
+        <testSourceDirectory>src/test/kotlin</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
@@ -40,10 +55,22 @@
                             <goal>compile</goal>
                         </goals>
                     </execution>
+                    <execution>
+                        <id>test-compile</id>
+                        <phase>test-compile</phase>
+                        <goals>
+                            <goal>test-compile</goal>
+                        </goals>
+                    </execution>
                 </executions>
                 <configuration>
                     <jvmTarget>${jvm.target}</jvmTarget>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
